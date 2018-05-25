@@ -1,0 +1,22 @@
+{
+  "name": "Workout App",
+  "version": "1.0.0",
+  "description": "all the stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "sam-shih"
+  },
+  "keywords": [
+    "mvp"
+  ],
+  "author": "Sam Shih",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "nodemon": "^1.17.5"
+  }
+}
