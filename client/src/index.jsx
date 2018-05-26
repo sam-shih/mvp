@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Question from './components/Question.jsx';
-import Login from '.components/Login.jsx';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +9,41 @@ class App extends React.Component {
     this.state = {
       items: []
     }
+
+    this.yes = this.yes.bind(this);
+    this.no = this.no.bind(this);
   }
+
+  yes() {
+    console.log('yes');
+    $.post('/question')
+    .done((res) => {
+      console.log('got a response');
+    })
+    .fail((err) => {
+      console.log('no dice');
+    })
+  }
+
+  no () {
+    console.log('no');
+
+  }
+
+  render () {
+    return (
+      <div>
+      <h4>Workout Share</h4>
+        <div>
+          <Question onYes={this.yes} onNo={this.no}/>
+        </div>
+      </div>
+    )
+  }
+}
+
+
+ReactDOM.render(<App />, document.getElementById('app'));
 
   // componentDidMount () {
   //   $.get('/index', () => {})
@@ -23,45 +55,19 @@ class App extends React.Component {
   //   // else send to '/question' page.
   // }
 
-  yes() {
-    console.log('yes');
-    // set state to the yes page...log update (increment) the db?
-    $.post('/question', {data: "hello"})
-     .done((res) => {
-      console.log('ok');
-     })
-     .fail((err) => {
-      console.log('crap');
-     })
-  }
 
-  no () {
-    console.log('no');
-    // set state to the no page...
+// import Login from './components/Login.jsx';
+    // this.signUp = this.signUp.bind(this);
+    // this.login = this.login.bind(this);
+    //     // <div>
+        //   <Login onSignUp={this.signUp.bind(this)} onLogin={this.login.bind(this)}/>
+        // </div>
+  // signUp (userName) {
+  //   $.ajax({
 
-  }
+  //   })
+  // }
 
-  signUp () {
+  // login (userName) {
 
-  }
-
-  login () {
-
-  }
-
-  render () {
-    return (
-      <div>
-      <h4>Workout Share</h4>
-        <div>
-          <Login onSignUp={this.signUp.bind(this)} onLogin={this.login.bind(this)}/>
-        </div>
-        <div>
-          <Question onYes={this.yes.bind(this)} onNo={this.no.bind(this)}/>
-        </div>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('app'));
+  // }

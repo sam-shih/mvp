@@ -10,11 +10,13 @@ class Question extends React.Component {
     this.no = this.no.bind(this);
   }
 
-  yes () {
+  yes (e) {
+    e.preventDefault();
     this.props.onYes();
   }
 
-  no () {
+  no (e) {
+    e.preventDefault();
     this.props.onNo();
   }
 

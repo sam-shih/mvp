@@ -6,30 +6,36 @@ class Login extends React.Component {
     this.state = {
       person: ''
     }
+    this.onChange =  this.onChange.bind(this);
   }
 
   onChange (e) {
+    console.log(e.target.value);
     this.setState({
       person: e.target.value
     });
   }
 
-  signUp () {
+  signUp (e) {
+    e.preventDefault();
     this.props.onSignUp(this.state.person);
   }
 
-  login () {
+  login (e) {
+    e.preventDefault();
     this.props.onLogin(this.state.person);
   }
 
   render () {
     return (
       <div>
-        <input value={this.state.person} onChange={this.onChange} />
-      </div>
-      <div>
-        <button onClick={this.signUp}>Sign Up</button>
-        <button onClick={this.login}>Login</button>
+        <div>
+          <input value={this.state.person} onChange={this.onChange} />
+        </div>
+        <div>
+          <button onClick={this.signUp}>Sign Up</button>
+          <button onClick={this.login}>Login</button>
+        </div>
       </div>
     )
   }
