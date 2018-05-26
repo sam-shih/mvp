@@ -7,14 +7,9 @@ let app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(parser.urlencoded());
 
-app.get('/index', function (req, res) {
-
-})
-
 app.post('/question', function(req, res) {
   console.log("POST");
-  console.log(req.data);
-  // db.plusStreak(req.body.data);
+  db.plusStreak();
   res.end();
 })
 
@@ -23,3 +18,7 @@ app.listen(port, function() {
   console.log(`listening on port ${port}!`);
 });
 
+
+// app.get('/index', function (req, res) {
+
+// })
