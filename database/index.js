@@ -22,11 +22,11 @@ let hrrThurtyWan = new User({
 });
 
 let plusStreak = () => {
-  User.findOne({name: 'Hack Reacter Remote 31!'}, (err, doc) => {
-    console.log(doc);
-    doc.streak = ;
-    doc.save();
-  })
+  // User.findOne({name: 'Hack Reacter Remote 31!'}, (err, doc) => {
+  //   console.log(doc);
+  //   doc.streak = ;
+  //   doc.save();
+  // })
   console.log('made it into this file');
 }
 
