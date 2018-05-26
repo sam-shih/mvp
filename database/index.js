@@ -10,7 +10,8 @@ dbInit.once('open', function() {
 let userSchema = mongoose.Schema({
   name: String,
   email: String,
-  streak: Number
+  streak: Number,
+  time: {type: Date, default: Date.now}
 });
 
 let User = mongoose.model('User', userSchema);
@@ -21,12 +22,16 @@ let hrrThurtyWan = new User({
   streak: 0
 });
 
+hrrThurtyWan.save((err) => {
+  if(err) return console.log(err);
+});
+
 let plusStreak = () => {
-  // User.findOne({name: 'Hack Reacter Remote 31!'}, (err, doc) => {
-  //   console.log(doc);
-  //   doc.streak = ;
-  //   doc.save();
-  // })
+  User.findOne({name: 'Hack Reacter Remote 31!'}, (err, doc) => {
+    console.log(doc);
+    doc.streak++;
+    doc.save();
+  })
   console.log('made it into this file');
 }
 
