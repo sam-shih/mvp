@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 mongoose.connect('mongodb://localhost/test');
 
-let dbInit = mongoose.connection;
+// let dbInit = mongoose.connection;
 
-dbInit.once('open', function() {
-  console.log('database connected successfully');
-})
+// dbInit.once('open', function() {
+//   console.log('database connected successfully');
+// })
 
 let userSchema = mongoose.Schema({
   name: String,
@@ -28,14 +28,31 @@ hrrThurtyWan.save((err) => {
 
 let plusStreak = () => {
   User.findOne({name: 'Hack Reacter Remote 31!'}, (err, doc) => {
-    console.log(doc);
+    // console.log(doc);
     doc.streak++;
     doc.save();
   })
   console.log('made it into this file');
 }
 
+let getStreak = (callback) =>{
+  User.findOne({name: 'Hack Reacter Remote 31!'}, (err, doc) => {
+    if (err) return console.log(err);
+    callback(doc.streak);
+  })
+}
+
+let resetStreak = () => {
+    User.findOne({name: 'Hack Reacter Remote 31!'}, (err, doc) => {
+    // console.log(doc);
+    doc.streak = 0;
+    doc.save();
+  })
+}
+
 module.exports.plusStreak = plusStreak;
+module.exports.getStreak = getStreak;
+module.exports.resetStreak = resetStreak;
 
 // let signUp = (users) => {
 //   let data = {};
